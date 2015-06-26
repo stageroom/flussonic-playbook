@@ -1,0 +1,38 @@
+---
+- name: add multiverse
+  apt_repository: repo='deb http://us.archive.ubuntu.com/ubuntu/ trusty multiverse' state=present update_cache=yes
+
+- name: install deps using apt
+  apt: name={{item}} state=present
+  with_items:
+    - language-pack-en
+    - git
+    - mc
+    - vim
+    - wget
+    - python-software-properties
+
+- name: update locale
+  command: update-locale LANG=en_US.UTF-8
+
+- name: dpkg-reconfigure
+  command: dpkg-reconfigure locales
+
+- include: users.yml
+- include: ssh.yml
+
+- name: get iptables rules
+  shell: iptables -L -n
+  register: iptablesrules
+  changed_when: false
+  always_run: yes
+
+- name: open ports via iptables
+  command: "/sbin/iptables -I INPUT 1 -p tcp --dport {{ item }} -m state --state NEW,ESTABLISHED -j ACCEPT"
+  when: iptablesrules.stdout.find("dpt:{{ item }}") == -1 and iptablesrules.stdout.find("dpts:{{ item }}") == -1
+  with_items: flussonic.ports
+  notify:
+  - iptables save
+  - iptables restart
+
+- meta: flush_handlers

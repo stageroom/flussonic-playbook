@@ -1,0 +1,23 @@
+---
+
+- name: Chef Server Common Tasks
+  hosts: all
+  sudo: yes
+  tags:
+    - prod
+
+  roles:
+    - role: common
+
+  vars_files:
+    - settings.yml
+
+- name: Production Deploy Tasks
+  hosts: production
+  sudo: yes
+  sudo_user: "{{ ansible_ssh_user }}"
+  remote_user: "{{ ansible_ssh_user }}"
+  tags: prod
+
+  roles:
+    # - role: prod

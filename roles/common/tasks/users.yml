@@ -1,0 +1,16 @@
+---
+- name: create admin user
+  user: name="{{ admin_user }}" shell=/bin/bash state=present
+  register: admin_created
+  notify:
+  - copy root keys
+  when: production
+
+- name: update sudoers
+  template:
+    src: sudoers.d.j2
+    dest: "/etc/sudoers.d/{{ sudoers_filename }}"
+    mode: 0644
+    owner: root
+    group: root
+    validate: "/usr/sbin/visudo -cf %s"

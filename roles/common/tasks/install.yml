@@ -1,0 +1,15 @@
+---
+# wget -q -O - http://debian.erlyvideo.org/binary/gpg.key | apt-key add -
+# echo "deb http://debian.erlyvideo.org binary/" > /etc/apt/sources.list.d/erlyvideo.list
+# apt-get update
+# apt-get -y install flussonic flussonic-ffmpeg
+- name: get flussonic key
+  apt_key: url=http://debian.erlyvideo.org/binary/gpg.key state=present
+- name: add flussonic repo
+  apt_repository: repo='deb http://debian.erlyvideo.org binary/' state=present update_cache=yes
+
+- name: install flussonic using apt
+  apt: name={{item}} state=present
+  with_items:
+    - flussonic
+    - flussonic-ffmpeg

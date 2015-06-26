@@ -1,0 +1,6 @@
+---
+- name: iptables save
+  command: /sbin/iptables-save
+
+- name: iptables restart
+  command: /sbin/iptables-apply

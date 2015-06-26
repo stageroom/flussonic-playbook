@@ -1,0 +1,9 @@
+---
+- name: update flussonic license
+  template:
+    src: license.txt.j2
+    dest: "/etc/flussonic/license.txt"
+    mode: 0600
+    owner: root
+    group: root
+  notify: flussonic restart

@@ -1,0 +1,9 @@
+---
+- name: flussonic start
+  command: service flussonic start
+- name: flussonic restart
+  command: service flussonic restart
+- name: flussonic status
+  command: service flussonic status
+- name: flussonic stop
+  command: service flussonic stop

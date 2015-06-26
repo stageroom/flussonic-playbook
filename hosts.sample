@@ -1,0 +1,4 @@
+some.prod.ru ansible_ssh_host=some.prod.ru ansible_ssh_user="{{ 'root' if init == 'y' else 'SERVER_ADMIN_HERE' }}"
+
+[production]
+some.prod.ru

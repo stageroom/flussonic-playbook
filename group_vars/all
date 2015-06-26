@@ -1,0 +1,45 @@
+---
+# Variables listed here are applicable to all host groups
+
+init: 'n'
+
+network_interface: ansible_eth0
+
+production: true
+
+sudoers_filename: "admin"
+sudoers_nopasswd: true
+sudoers:
+  - name: "{{ admin_user }}"
+    users:
+      - "ALL"
+
+flussonic:
+  ports:
+  - 443
+  - 80
+  - 8080
+  - 554
+  - 1935
+
+sshd:
+  - name: ChallengeResponseAuthentication
+    value: "no"
+  - name: UsePAM
+    value: "yes"
+  - name: PermitRootLogin
+    value: "no"
+  - name: PasswordAuthentication
+    value: "no"
+  - name: Port
+    value: 22
+  - name: Protocol
+    value: 2
+  - name: PubkeyAuthentication
+    value: "yes"
+  - name: X11Forwarding
+    value: "yes"
+  - name: Subsystem
+    value: "sftp /usr/lib/sftp-server"
+  - name: LogLevel
+    value: "info"
