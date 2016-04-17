@@ -6,6 +6,7 @@ init: 'n'
 network_interface: ansible_eth0
 
 production: true
+docker: false
 
 sudoers_filename: "admin"
 sudoers_nopasswd: true

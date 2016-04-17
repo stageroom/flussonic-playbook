@@ -2,12 +2,15 @@
 - name: add multiverse
   apt_repository: repo='deb http://us.archive.ubuntu.com/ubuntu/ trusty multiverse' state=present update_cache=yes
 
+- include: hosts.yml
+
 - name: install deps using apt
   apt: name={{item}} state=present
   with_items:
     - language-pack-en
     - git
     - mc
+    - htop
     - vim
     - wget
     - python-software-properties

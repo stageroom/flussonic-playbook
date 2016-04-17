@@ -1,8 +1,8 @@
 ---
 
-- name: Chef Server Common Tasks
+- name: Flussonic Common Tasks
   hosts: all
-  sudo: yes
+  become: yes
   tags:
     - prod
 
@@ -14,8 +14,8 @@
 
 - name: Production Deploy Tasks
   hosts: production
-  sudo: yes
-  sudo_user: "{{ ansible_ssh_user }}"
+  become: yes
+  become_user: "{{ ansible_ssh_user }}"
   remote_user: "{{ ansible_ssh_user }}"
   tags: prod
 

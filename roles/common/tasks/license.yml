@@ -6,4 +6,5 @@
     mode: 0600
     owner: root
     group: root
-  notify: flussonic restart
+  notify:
+  - flussonic restart

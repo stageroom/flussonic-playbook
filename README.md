@@ -17,11 +17,11 @@ I reviewed the instructions ( here http://erlyvideo.ru/doc/installation#debian )
 
 For the first time if we need login as `root`:
 
-    $ ansible-playbook playbook.yml -i hosts --extra-vars="init=y"
+    $ make setup
 
 Next time, when root access will be restricted:
 
-    $ ansible-playbook playbook.yml -i hosts
+    $ make deploy
 
 ## Configure Flussonic Server
 
