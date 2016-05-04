@@ -9,4 +9,17 @@ flussonic:
     rtsp: 554
   key: "FLUSSONIC_LICENSE_LONG_KEY"
   edit_auth: "flussonic letmein!"
-  live_channel: mylive
+  view_auth: "user letmein!"
+  streams:
+    live:
+      # auth: http://...
+      # on_publish: http://...
+      publish_enabled: true
+      # password: some
+      # max_bitrate: 1000
+      # no_prepush: true
+      # thumbnails: true
+      # domains: "*.some.com"
+      # add_audio_only: true
+      # dvr_offline: /storage 5d 90%
+      dvr: "/storage 90% 5d"

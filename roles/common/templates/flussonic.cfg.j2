@@ -8,6 +8,7 @@ http 80;
 pulsedb /var/lib/flussonic;
 session_log /var/lib/flussonic;
 edit_auth {{ flussonic.edit_auth  }};
+view_auth {{ flussonic.view_auth  }};
 logrequests true;
 
 {% for name, stream in flussonic.streams.iteritems() %}
