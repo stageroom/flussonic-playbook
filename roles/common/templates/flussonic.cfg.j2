@@ -1,9 +1,9 @@
-{% if flussonic.ports.http == 8080 %}
-http 80;
-{% endif %}
 {% for key, val in flussonic.ports.iteritems() %}
 {{key}} {{val}};
 {% endfor %}
+{% if flussonic.port8080 == True %}
+http 8080;
+{% endif %}
 
 pulsedb /var/lib/flussonic;
 session_log /var/lib/flussonic;

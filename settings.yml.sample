@@ -1,10 +1,17 @@
 ---
 admin_user: SERVER_ADMIN_USER
+iptables:
+  ports:
+  - 443
+  - 80
+  - 8080
+  - 554
+  - 1935
 flussonic:
   vod: false
+  port8080: true
   ports:
     http: 80
-    http: 8080
     rtmp: 1935
     rtsp: 554
   key: "FLUSSONIC_LICENSE_LONG_KEY"

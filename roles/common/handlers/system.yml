@@ -3,3 +3,5 @@
   service: name=network state=restarted
 - name: sshd restart
   service: name=ssh state=restarted
+- name: dpkg-reconfigure
+  command: dpkg-reconfigure locales
