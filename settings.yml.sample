@@ -1,3 +1,12 @@
 ---
 admin_user: SERVER_ADMIN_USER
-flussonic_key: "FLUSSONIC_LICENSE_LONG_KEY"
+flussonic:
+  vod: false
+  ports:
+    http: 80
+    http: 8080
+    rtmp: 1935
+    rtsp: 554
+  key: "FLUSSONIC_LICENSE_LONG_KEY"
+  edit_auth: "flussonic letmein!"
+  live_channel: mylive

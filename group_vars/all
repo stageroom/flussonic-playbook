@@ -15,7 +15,7 @@ sudoers:
     users:
       - "ALL"
 
-flussonic:
+iptables:
   ports:
   - 443
   - 80

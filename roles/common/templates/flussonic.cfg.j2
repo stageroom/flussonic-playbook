@@ -1,0 +1,29 @@
+{% if flussonic.ports.http == 8080 %}
+http 80;
+{% endif %}
+{% for key, val in flussonic.ports.iteritems() %}
+{{key}} {{val}};
+{% endfor %}
+
+pulsedb /var/lib/flussonic;
+session_log /var/lib/flussonic;
+edit_auth {{ flussonic.edit_auth  }};
+logrequests true;
+
+{% for name, stream in flussonic.streams.iteritems() %}
+live {{ name }} {
+{% for key, val in stream.iteritems() %}
+{% if val == True %}
+{{ key }};
+{% else %}
+{{ key }} {{ val }};
+{% endif %}
+{% endfor %}
+}
+{% endfor %}
+
+{% if flussonic.vod == True %}
+file vod {
+  path priv;
+}
+{% endif %}
