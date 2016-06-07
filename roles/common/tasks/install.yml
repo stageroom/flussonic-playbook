@@ -13,3 +13,4 @@
   with_items:
     - flussonic
     - flussonic-ffmpeg
+    - flussonic-python

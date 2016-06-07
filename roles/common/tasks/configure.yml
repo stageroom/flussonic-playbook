@@ -2,4 +2,4 @@
 - name: update config
   template: src=templates/flussonic.cfg.j2 dest=/etc/flussonic/flussonic.conf mode=0644 owner=root group=root
   notify:
-  - flussonic restart
+  - flussonic start
