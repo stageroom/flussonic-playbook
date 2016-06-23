@@ -1,7 +1,29 @@
 ---
-- include: system.yml
-- include: iptables.yml
-- include: flussonic.yml
+# HotfixFix Ansible 2.1 handler bug.
+# - include: system.yml
+- name: network restart
+  service: name=network state=restarted
+- name: sshd restart
+  service: name=ssh state=restarted
+- name: dpkg-reconfigure
+  command: dpkg-reconfigure locales
+
+# - include: iptables.yml
+- name: iptables save
+  command: /sbin/iptables-save
+
+- name: iptables restart
+  command: /sbin/iptables-apply
+
+# - include: flussonic.yml
+- name: flussonic start
+  command: service flussonic start
+- name: flussonic restart
+  command: service flussonic restart
+- name: flussonic status
+  command: service flussonic status
+- name: flussonic stop
+  command: service flussonic stop
 
 - name: copy root keys
   shell: "mkdir -p /home/{{ admin_user }}/.ssh && cp /root/.ssh/* /home/{{ admin_user }}/.ssh && chmod -R 0700 /home/{{ admin_user }}/.ssh && chown -R {{ admin_user }}:{{ admin_user }} /home/{{ admin_user }}/.ssh"
