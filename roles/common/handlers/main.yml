@@ -2,7 +2,7 @@
 # HotfixFix Ansible 2.1 handler bug.
 # - include: system.yml
 - name: network restart
-  service: name=network state=restarted
+  service: name=networking state=restarted
 - name: sshd restart
   service: name=ssh state=restarted
 - name: dpkg-reconfigure
