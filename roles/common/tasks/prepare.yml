@@ -13,6 +13,7 @@
     - htop
     - vim
     - wget
+    - iptables-persistent
     - python-software-properties
 
 - name: update locale

@@ -10,10 +10,10 @@
 
 # - include: iptables.yml
 - name: iptables save
-  command: /sbin/iptables-save
+  command: /etc/init.d/iptables-persistent save
 
 - name: iptables restart
-  command: /sbin/iptables-apply
+  command: /etc/init.d/iptables-persistent reload
 
 # - include: flussonic.yml
 - name: flussonic start
